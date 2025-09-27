@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('shop_tokens', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('shop_id')->nullable()->constrained('shops');
+            $table->string('token');
             $table->timestamps();
         });
     }

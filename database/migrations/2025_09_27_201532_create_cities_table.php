@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('affiliate_products', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->id();
+            $table->string('name_ar');
+            $table->string('name_en')->nullable();
+            $table->boolean('status')->default(true);
+            $table->foreignId('country_id')->nullable()->constrained('countries');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('affiliate_products');
+        Schema::dropIfExists('cities');
     }
 };

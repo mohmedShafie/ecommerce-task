@@ -6,5 +6,38 @@ use Illuminate\Database\Eloquent\Model;
 
 class company extends Model
 {
-    //
+    protected $fillable = [
+        'name_ar',
+        'name_en',
+        'slug',
+        'image',
+        'description_ar',
+        'description_en',
+        'status'
+    ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+    public function shops()
+    {
+        return $this->hasMany(Shop::class);
+    }
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
+    public function sections()
+    {
+        return $this->hasMany(Section::class);
+    }
+    public function brands()
+    {
+        return $this->hasMany(Brand::class);
+    }
+    public function offers()
+    {
+        return $this->hasMany(Offer::class);
+    }
 }

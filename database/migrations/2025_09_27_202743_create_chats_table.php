@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->id();
+            $table->string('chat_number')->unique()->index();
+            $table->string('chat_type')->nullable()->comment('customer, shop, delivery_man, order, issues');
             $table->timestamps();
         });
     }

@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('wishlists', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('customer_id')->nullable()->constrained('customers');
+            $table->foreignId('product_id')->nullable()->constrained('products');
+            $table->foreignId('shop_id')->nullable()->constrained('shops');
+            $table->foreignId('company_id')->nullable()->constrained('companies');
+            $table->foreignId('brand_id')->nullable()->constrained('brands');
             $table->timestamps();
         });
     }

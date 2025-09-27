@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('shop_deliveries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('shop_id')->nullable()->constrained('shops');
+            $table->foreignId('country_id')->nullable()->constrained('countries');
+            $table->foreignId('city_id')->nullable()->constrained('cities');
+            $table->foreignId('region_id')->nullable()->constrained('regions');
+            $table->string('delivery_price')->nullable();
+            $table->decimal('latitude', 10, 8)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

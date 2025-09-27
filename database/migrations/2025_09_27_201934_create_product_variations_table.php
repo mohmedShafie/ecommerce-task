@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('product_variations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('product_id')->nullable()->constrained('products');
+            $table->string('variation');
+            $table->string('variation_value');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
