@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wallets', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('chat_id')->nullable()->constrained('chats');
             $table->foreignId('customer_id')->nullable()->constrained('customers');
             $table->foreignId('shop_id')->nullable()->constrained('shops');
-            $table->foreignId('company_id')->nullable()->constrained('companies');
-            $table->string('balance')->default(0);
-            $table->string('credit')->default(0);
-            $table->string('debit')->default(0);
+            $table->foreignId('delivery_man_id')->nullable()->constrained('delivery_men');
+            $table->foreignId('order_id')->nullable()->constrained('orders');
+            $table->text('message')->nullable();
+            $table->string('type')->nullable()->comment('send, receive');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('wallets');
+        Schema::dropIfExists('messages');
     }
 };

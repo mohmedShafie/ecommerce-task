@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('product_id')->nullable()->constrained('products');
+            $table->string('title_ar');
+            $table->string('title_en')->nullable();
+            $table->text('description_ar')->nullable();
+            $table->text('description_en')->nullable();
+            $table->string('discount')->nullable();
+            $table->string('discount_type')->nullable()->comment('percentage, fixed');
+            $table->string('discount_price')->nullable();
+            $table->string('discount_percentage')->nullable();
+            $table->string('code')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

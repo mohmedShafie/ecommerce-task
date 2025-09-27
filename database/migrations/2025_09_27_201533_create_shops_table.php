@@ -11,19 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('carts', function (Blueprint $table) {
+        Schema::create('shops', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->nullable()->constrained('customers');
-            $table->foreignId('product_id')->nullable()->constrained('products');
+            $table->string('name_ar');
+            $table->string('name_en')->nullable();
+            $table->string('slug')->index()->unique();
+            $table->string('image')->nullable();
+            $table->text('description_ar')->nullable();
+            $table->text('description_en')->nullable();
+            $table->boolean('status')->default(true);
             $table->foreignId('company_id')->nullable()->constrained('companies');
             $table->foreignId('section_id')->nullable()->constrained('sections');
             $table->foreignId('category_id')->nullable()->constrained('categories');
             $table->foreignId('brand_id')->nullable()->constrained('brands');
-            $table->foreignId('offer_id')->nullable()->constrained('offers');
-            $table->string('quantity');
-            $table->string('price');
-            $table->string('total');
-            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('carts');
+        Schema::dropIfExists('shops');
     }
 };

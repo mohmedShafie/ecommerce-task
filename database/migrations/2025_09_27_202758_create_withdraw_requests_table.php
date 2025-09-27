@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('withdraw_requests', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('customer_id')->nullable()->constrained('customers');
+            $table->string('amount');
+            $table->string('status')->nullable()->comment('pending, approved, rejected');
+            $table->string('payment_method')->nullable();
             $table->timestamps();
         });
     }

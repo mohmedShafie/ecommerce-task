@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class Banner extends Model
 {
     protected $fillable = [
         'title_ar',
@@ -12,6 +12,11 @@ class Blog extends Model
         'description_ar',
         'description_en',
         'image',
+        'link',
+        'type',
+        'position',
+        'platform',
+        'placement',
         'status'
     ];
 }
