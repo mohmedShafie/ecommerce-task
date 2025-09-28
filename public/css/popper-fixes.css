@@ -1,0 +1,41 @@
+/* Popper.js Margin Style Fixes */
+
+/* Remove margin styles from popper elements */
+[data-popper-placement] {
+    margin: 0 !important;
+}
+
+.popper,
+[data-popper-reference-hidden],
+[data-popper-escaped] {
+    margin: 0 !important;
+}
+
+/* Ensure Bootstrap dropdowns don't use margin */
+.dropdown-menu {
+    margin: 0 !important;
+}
+
+/* Ensure tooltips don't use margin */
+.tooltip {
+    margin: 0 !important;
+}
+
+/* Ensure popovers don't use margin */
+.popover {
+    margin: 0 !important;
+}
+
+/* Fix for Vuexy layout components */
+.menu-sub,
+.menu-dropdown {
+    margin: 0 !important;
+}
+
+/* Fix for any other popper-based components */
+[class*="popper"],
+[class*="dropdown"],
+[class*="tooltip"],
+[class*="popover"] {
+    margin: 0 !important;
+}
