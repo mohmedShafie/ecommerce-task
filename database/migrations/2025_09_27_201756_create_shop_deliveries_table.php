@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('shop_deliveries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('shop_id')->nullable()->constrained('shops');
-            $table->foreignId('country_id')->nullable()->constrained('countries');
-            $table->foreignId('city_id')->nullable()->constrained('cities');
-            $table->foreignId('region_id')->nullable()->constrained('regions');
+            $table->foreignId('shop_id')->nullable()->constrained('shops')->onDelete('cascade');
+            $table->foreignId('country_id')->nullable()->constrained('countries')->onDelete('cascade');
+            $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('cascade');
+            $table->foreignId('region_id')->nullable()->constrained('regions')->onDelete('cascade');
             $table->string('delivery_price')->nullable();
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();

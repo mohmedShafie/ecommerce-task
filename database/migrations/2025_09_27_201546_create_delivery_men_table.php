@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->boolean('status')->default(true);
-            $table->foreignId('country_id')->nullable()->constrained('countries');
-            $table->foreignId('city_id')->nullable()->constrained('cities');
-            $table->foreignId('region_id')->nullable()->constrained('regions');
+            $table->foreignId('country_id')->nullable()->constrained('countries')->onDelete('cascade');
+            $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('cascade');
+            $table->foreignId('region_id')->nullable()->constrained('regions')->onDelete('cascade');
             $table->timestamps();
         });
     }

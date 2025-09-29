@@ -15,13 +15,13 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!auth()->guard('web')->check()) {
+        if (!auth()->guard('admin')->check()) {
             return redirect()->route('admin.login');
         }
 
-        $admin = auth()->guard('web')->user();
+        $admin = auth()->guard('admin')->user();
         if (!$admin instanceof \App\Models\Admin) {
-            auth()->guard('web')->logout();
+            auth()->guard('admin')->logout();
             return redirect()->route('admin.login');
         }
 

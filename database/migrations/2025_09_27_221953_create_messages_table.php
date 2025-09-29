@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('chat_id')->nullable()->constrained('chats');
-            $table->foreignId('customer_id')->nullable()->constrained('customers');
-            $table->foreignId('shop_id')->nullable()->constrained('shops');
-            $table->foreignId('delivery_man_id')->nullable()->constrained('delivery_men');
-            $table->foreignId('order_id')->nullable()->constrained('orders');
+            $table->foreignId('chat_id')->nullable()->constrained('chats')->onDelete('cascade');
+            $table->foreignId('customer_id')->nullable()->constrained('customers')->onDelete('cascade');
+            $table->foreignId('shop_id')->nullable()->constrained('shops')->onDelete('cascade');
+            $table->foreignId('delivery_man_id')->nullable()->constrained('delivery_men')->onDelete('cascade');
+            $table->foreignId('order_id')->nullable()->constrained('orders')->onDelete('cascade');
             $table->text('message')->nullable();
             $table->string('type')->nullable()->comment('send, receive');
             $table->timestamps();

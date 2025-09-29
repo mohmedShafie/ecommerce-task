@@ -30,24 +30,19 @@ class FileHelpers
 
             // If upload is successful
             if ($put) {
-                // If it's an update (old image exists), delete the old image
                 if ($oldImage) {
-                    // Check if the old image exists before trying to delete it
-                    $oldImagePath = storage_path('app/public/' . $oldImage->path);
-
+                    $oldImagePath = storage_path('app/public/' . $oldImage);
                     if (file_exists($oldImagePath)) {
-                        unlink($oldImagePath);  // Delete the old image file
+                        unlink($oldImagePath);
                     }
                 }
-                // Return a new Image instance for saving in the relationship
-                return ['path' => $path . $fileName];
+                return $path . $fileName;
             }
         }
 
         // If no file is uploaded or upload fails, return null
         return null;
     }
-
 
     public static function fileSize($file, $precision = 2)
     {
@@ -67,7 +62,7 @@ class FileHelpers
             $image_path = storage_path('app/public/' . $path);
             if (file_exists($image_path)) {
                 unlink($image_path);
-            }else{
+            } else {
                 $image_path = public_path($path);
                 if (file_exists($image_path)) {
                     unlink($image_path);

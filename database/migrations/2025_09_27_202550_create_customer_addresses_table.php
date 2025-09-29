@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('customer_addresses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->nullable()->constrained('customers');
+            $table->foreignId('customer_id')->nullable()->constrained('customers')->onDelete('cascade');
             $table->string('address')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->string('phone')->nullable();
-            $table->foreignId('country_id')->nullable()->constrained('countries');
-            $table->foreignId('city_id')->nullable()->constrained('cities');
-            $table->foreignId('region_id')->nullable()->constrained('regions');
+            $table->foreignId('country_id')->nullable()->constrained('countries')->onDelete('cascade');
+            $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('cascade');
+            $table->foreignId('region_id')->nullable()->constrained('regions')->onDelete('cascade');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

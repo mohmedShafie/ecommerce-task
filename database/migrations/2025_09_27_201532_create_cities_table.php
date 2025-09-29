@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name_ar');
             $table->string('name_en')->nullable();
             $table->boolean('status')->default(true);
-            $table->foreignId('country_id')->nullable()->constrained('countries');
+            $table->foreignId('country_id')->nullable()->constrained('countries')->onDelete('cascade');
             $table->timestamps();
         });
     }

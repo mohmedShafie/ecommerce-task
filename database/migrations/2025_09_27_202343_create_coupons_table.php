@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->nullable()->constrained('products');
+            $table->foreignId('product_id')->nullable()->constrained('products')->onDelete('cascade');
             $table->string('title_ar');
             $table->string('title_en')->nullable();
             $table->text('description_ar')->nullable();

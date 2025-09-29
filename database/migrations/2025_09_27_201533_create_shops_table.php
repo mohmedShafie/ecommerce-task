@@ -20,10 +20,10 @@ return new class extends Migration
             $table->text('description_ar')->nullable();
             $table->text('description_en')->nullable();
             $table->boolean('status')->default(true);
-            $table->foreignId('company_id')->nullable()->constrained('companies');
-            $table->foreignId('section_id')->nullable()->constrained('sections');
-            $table->foreignId('category_id')->nullable()->constrained('categories');
-            $table->foreignId('brand_id')->nullable()->constrained('brands');
+            $table->foreignId('company_id')->nullable()->constrained('companies')->onDelete('cascade');
+            $table->foreignId('section_id')->nullable()->constrained('sections')->onDelete('cascade');
+            $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('cascade');
+            $table->foreignId('brand_id')->nullable()->constrained('brands')->onDelete('cascade');
             $table->timestamps();
         });
     }

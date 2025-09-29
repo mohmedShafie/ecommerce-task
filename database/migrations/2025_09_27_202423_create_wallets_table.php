@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('wallets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->nullable()->constrained('customers');
-            $table->foreignId('shop_id')->nullable()->constrained('shops');
-            $table->foreignId('company_id')->nullable()->constrained('companies');
+            $table->foreignId('customer_id')->nullable()->constrained('customers')->onDelete('cascade');
+            $table->foreignId('shop_id')->nullable()->constrained('shops')->onDelete('cascade');
+            $table->foreignId('company_id')->nullable()->constrained('companies')->onDelete('cascade');
             $table->string('balance')->default(0);
             $table->string('credit')->default(0);
             $table->string('debit')->default(0);

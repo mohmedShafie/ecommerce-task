@@ -12,7 +12,7 @@
             <!-- dashboard -->
             <li class="nav-item" >
                 <a class="nav-link {{Request::is('admin')?'active-page':''}}"
-                   href="{{route('admin.home')}}">
+                   href="{{route('admin.dashboard')}}">
                     <i class="fa-solid fa-gauge nav-icon"></i>{{trans('messages.dashboard')}}
                 </a>
             </li>
@@ -23,7 +23,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle {{Request::is('admin/home/*') || Request::is('admin/') ?'active-page':''}}" href="#" id="dashboardsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa-solid fa-staff-snake nav-icon"></i>
-                    {{trans('messages.branches')}}
+                    {{trans('messages.categories')}}
                 </a>
             </li>
             <!-- end branches -->

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name_ar');
             $table->string('name_en')->nullable();
             $table->boolean('status')->default(true);
-            $table->foreignId('city_id')->nullable()->constrained('cities');
+            $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('cascade');
             $table->timestamps();
         });
     }

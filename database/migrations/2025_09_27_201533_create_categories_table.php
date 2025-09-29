@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->text('description_ar')->nullable();
             $table->text('description_en')->nullable();
-            $table->foreignId('section_id')->nullable()->constrained('sections');
-            $table->foreignId('parent_id')->nullable()->constrained('categories');
+            $table->foreignId('section_id')->nullable()->constrained('sections')->onDelete('cascade');
+            $table->foreignId('parent_id')->nullable()->constrained('categories')->onDelete('cascade');
             $table->string('point')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();

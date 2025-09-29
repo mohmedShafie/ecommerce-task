@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\CustomerController;
-use App\Http\Controllers\Admin\LocationController;
-use App\Http\Controllers\Admin\SessionController;
-use App\Http\Controllers\Admin\Auth\AdminController;
+
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +16,19 @@ use App\Http\Controllers\Admin\Auth\AdminController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/login', [AdminController::class, 'showFormLogin'])->name('admin.show.formLogin');
+Route::post('/login', [AdminController::class, 'login'])->name('admin.login');
+
+Route::middleware(['admin', 'web'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+
+    // Categories routes
+    Route::resource('/categories', CategoryController::class)->except(['show']);
+    Route::post('/categories/{id}/change-status', [CategoryController::class, 'changeStatus'])->name('categories.changeStatus');
+
+    // Banners routes
+    Route::resource('banners', BannerController::class)->except(['show']);
+    Route::post('banners/{id}/change-status', [BannerController::class, 'changeStatus'])->name('banners.changeStatus');
+});

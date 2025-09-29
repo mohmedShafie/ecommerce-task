@@ -72,6 +72,7 @@
                     <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Deals</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                    <a href="{{ route('admin.login') }}" class="text-gray-700 hover:text-blue-600 font-medium">Login</a>
                 </div>
 
                 <!-- User Actions -->

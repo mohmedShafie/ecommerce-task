@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->nullable()->constrained('customers');
-            $table->foreignId('product_id')->nullable()->constrained('products');
-            $table->foreignId('company_id')->nullable()->constrained('companies');
-            $table->foreignId('offer_id')->nullable()->constrained('offers');
+            $table->foreignId('customer_id')->nullable()->constrained('customers')->onDelete('cascade');
+            $table->foreignId('product_id')->nullable()->constrained('products')->onDelete('cascade');
+            $table->foreignId('company_id')->nullable()->constrained('companies')->onDelete('cascade');
+            $table->foreignId('offer_id')->nullable()->constrained('offers')->onDelete('cascade');
             $table->string('payment_status')->nullable();
             $table->string('delivery_status')->nullable();
             $table->string('status')->nullable();
             $table->string('delivery_type')->nullable();
-            $table->foreignId('delivery_man_id')->nullable()->constrained('delivery_men');
+            $table->foreignId('delivery_man_id')->nullable()->constrained('delivery_men')->onDelete('cascade');
             $table->string('delivery_address')->nullable();
             $table->string('delivery_phone')->nullable();
             $table->timestamp('delivered_at')->nullable();

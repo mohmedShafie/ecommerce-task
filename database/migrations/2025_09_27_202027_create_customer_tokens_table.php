@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('customer_tokens', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->nullable()->constrained('customers');
+            $table->foreignId('customer_id')->nullable()->constrained('customers')->onDelete('cascade');
             $table->string('token');
             $table->timestamps();
         });
